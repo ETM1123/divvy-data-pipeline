@@ -1,0 +1,8 @@
+.env
+
+# Airflows metadata
+logs
+plugin
+myenv
+
+__pycache__
