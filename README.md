@@ -23,3 +23,7 @@ Here is the end-to-end process of the project:
 2. Move data from GCS to BigQuery (GCP)
 3. Transform and prepare data for visualization 
 4. Create Dashboards
+
+A screenshot of our current product. More to come.
+
+![A cute cat](divvy_dashboard_1.png)
