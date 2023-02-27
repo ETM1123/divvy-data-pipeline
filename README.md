@@ -26,4 +26,4 @@ Here is the end-to-end process of the project:
 
 A screenshot of our current product. More to come.
 
-![A cute cat](divvy_dashboard_1.png)
+![Dashboard](images/divvy_dashboard_1.png)
