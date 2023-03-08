@@ -7,3 +7,4 @@ myenv
 test_dag2.py 
 test_dags.py
 __pycache__
+.DS_Store

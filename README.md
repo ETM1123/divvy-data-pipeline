@@ -1,7 +1,7 @@
 # Divvy Data Pipeline
 
 ## Overview
-In this repo we will automate our previous [Divvy's bikeshare project](www.google.com) - where we analyzed and investigated the relationships between the annual and causal members who used Divvy's bikeshare services in the Chicago metropolitan areas. In the previous project, data was stored and computations were conducted locally. This repository scales the project by utilizing cloud platforms and creating a data pipeline for analysis. Google Cloud Platform (GCP) serves as the cloud service provider.
+In this repo we will automate our previous [Divvy's bikeshare project](https://github.com/ETM1123/Divvy-Bikeshare-Project) - where we analyzed and investigated the relationships between the annual and causal members who used Divvy's bikeshare services in the Chicago metropolitan areas. In the previous project, data was stored and computations were conducted locally. This repository scales the project by utilizing cloud platforms and creating a data pipeline for analysis. Google Cloud Platform (GCP) serves as the cloud service provider.
 
 
 ## Technologies
@@ -27,6 +27,11 @@ The end-to-end process of the project is as follows:
 4. Create Dashboards (Google Data Studio: Looker)
 
 ## Final Product
-Below is a screenshot of the current product. More updates to follow.
+Our product includes three dashboards that offer different levels of analysis regarding the relationships between annual and casual members. The first dashboard, 'Overview', provides an overview of general member behaviors, including popular stations and riding patterns. The second dashboard, 'Distributions', provides deeper analysis by displaying the distribution of trips at various granular levels. Finally, the 'Stations' dashboard offers geo-location charts that allow users to identify areas with high traffic. We encourage you to explore these dashboards to discover your own insights. Please find the link to access the dashboard below. [link-to-dashboard](https://lookerstudio.google.com/reporting/2397a020-65d2-42a4-8f05-b36c7c6cadaf)
 
-![Dashboard](images/divvy_dashboard_1.png)
+
+![Dashboard](images/divvy_overview_dashboard.png)
+
+![Dashboard](images/divvy_biketrip_dist.png)
+
+![Dashboard](images/divvy_stations_dashboard.png)
