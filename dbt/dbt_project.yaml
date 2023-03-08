@@ -35,3 +35,16 @@ models:
     # Applies to all files under models/example/
     example:
       materialized: view
+
+
+seeds: 
+    divvy_historic_biketrips:               
+        divvy_stations_lookup:
+            +column_types:
+                station_id: INTEGER
+                station_name: STRING
+                lat: FLOAT
+                lng: FLOAT
+                state: STRING
+                primary_neighborhood: STRING
+                secondary_neighborhood: STRING

@@ -2,10 +2,34 @@ version: 2
 
 sources:
     - name: staging
-      database: civil-cab-376514
+      database: 
       schema: trips_data_all
       tables:
         - name: divvy_tripdata
 
 models:
   - name: stg_divvy_tripdata
+    description: >
+        Bike trips made by annual and non-annual Divvy subscribers in the Chicago Metropolitan area between 2020-2022
+    columns:
+        - name: ride_id
+          description: Primary key for this table
+          tests:
+            - not_null:
+                severity: error
+        - name: rideable_type
+          description: Type of bikes user can take out (Docked, Classic, Electric)
+        - name: member_causal
+          description: Membership status of user
+        - name: start_station_name
+          description: Name of start station
+        - name: end_station_name
+          description: Name of end station
+        - name: start_lat
+          description: Start station's latitude coordinate
+        - name: start_lng
+          description: Start station's Longitude
+        - name: end_lat
+          description: End station's latitude coordinate
+        - name: end_lng
+          description: End station's Longitude 
