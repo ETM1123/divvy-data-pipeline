@@ -1,8 +1,8 @@
 # Divvy Data Pipeline
 
 ## Overview
-In this repo we will automate our previous [Divvy's bikeshare project](https://github.com/ETM1123/Divvy-Bikeshare-Project) - where we analyzed and investigated the relationships between the annual and causal members who used Divvy's bikeshare services in the Chicago metropolitan areas. In the previous project, data was stored and computations were conducted locally. This repository scales the project by utilizing cloud platforms and creating a data pipeline for analysis. Google Cloud Platform (GCP) serves as the cloud service provider.
-
+This repository aims to automate the analysis and investigation of Divvy's bikeshare project, as previously conducted and documented here: [Divvy's bikeshare project](https://github.com/ETM1123/Divvy-Bikeshare-Project). Unlike the previous project, data is stored and computations are conducted on the cloud through the utilization of Google Cloud Platform (GCP) to create a data pipeline for analysis. To facilitate the replication of this environment, we have provided a comprehensive step-by-step tutorial for interested users. Please follow the instructions provided in the tutorial to execute the code in this repository or to customize the environment for your own projects.
+- [tutorial](https://github.com/ETM1123/divvy-data-pipeline/blob/main/tutorial.md)
 
 ## Technologies
 The project leverages the following technologies for its implementation:
