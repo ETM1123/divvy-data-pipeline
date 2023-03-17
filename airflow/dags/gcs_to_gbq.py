@@ -13,12 +13,12 @@ DIVVY_TRIPDATA_FOLDER = "divvy_tripdata"
 URIS_FORMAT = f'gs://{BUCKET}/raw/{DIVVY_TRIPDATA_FOLDER}/{{}}/*.parquet'
 TABLE_NAME = "raw_divvy_tripdata"
 PARTITIONED_TABLE = TABLE_NAME.replace("raw_", "")
+PARTITION_COL = "started_at"
 
 create_table_query = f"""
 -- Creating a partition and cluster table
 CREATE OR REPLACE TABLE {PROJECT_ID}.{BIGQUERY_DATASET}.{PARTITIONED_TABLE}
-PARTITION BY DATE(started_at)
-CLUSTER BY member_casual AS
+PARTITION BY DATE({PARTITION_COL})
 SELECT * FROM {PROJECT_ID}.{BIGQUERY_DATASET}.{TABLE_NAME};
 """
 
@@ -46,7 +46,7 @@ with DAG('ingest_to_gbq_dag', default_args=default_args) as dag:
         },
     )
 
-    create_partitioned_and_clustered_table_dag = BigQueryExecuteQueryOperator(
+    create_partitioned_table_dag = BigQueryExecuteQueryOperator(
         task_id='create_table_task',
         sql=create_table_query,
         use_legacy_sql=False,
@@ -54,4 +54,4 @@ with DAG('ingest_to_gbq_dag', default_args=default_args) as dag:
         bigquery_conn_id='my_bigquery_connection',
     )
 
-    chain(bigquery_external_table_task, create_partitioned_and_clustered_table_dag)
+    chain(bigquery_external_table_task, create_partitioned_table_dag)

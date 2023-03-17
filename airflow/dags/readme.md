@@ -46,7 +46,7 @@
       }
       ```
         - In our case the two most important arguments are:
-          - start_date since there are no data available in the webpage prior to the start
+          - start_date since there are no data available in the webpage prior to April of 20202
           - catchup: This backfills all of the missed executions. For instance, if this was false we won't be able to get all the data since the start_date is in the past. 
   - Define dag with default variables:
     ```python
@@ -140,13 +140,14 @@
           URIS_FORMAT = f'gs://{BUCKET}/raw/{DIVVY_TRIPDATA_FOLDER}/{{}}/*.parquet'
           TABLE_NAME = "raw_divvy_tripdata"
           PARTITIONED_TABLE = TABLE_NAME.replace("raw_", "")
+          PARTITION_COL = "started_at"
           ```
       - Declare query
           ```python
           create_table_query = f"""
           -- Creating a partition and cluster table
           CREATE OR REPLACE TABLE {PROJECT_ID}.{BIGQUERY_DATASET}.{PARTITIONED_TABLE}
-          PARTITION BY DATE(started_at)
+          PARTITION BY DATE({PARTITION_COL})
           CLUSTER BY member_casual AS
           SELECT * FROM {PROJECT_ID}.{BIGQUERY_DATASET}.{TABLE_NAME};
           """
@@ -184,12 +185,12 @@
           ```
       - Add task 2
           ```python
-          create_partitioned_and_clustered_table_dag = BigQueryExecuteQueryOperator(
+          create_partitioned_table_dag = BigQueryExecuteQueryOperator(
           task_id='create_table_task',
           sql=create_table_query,
           use_legacy_sql=False,
           location='us-east5',
-          bigquery_conn_id='bigquery_default',
+          bigquery_conn_id='my_bigquery_connection',
           )
           ```
           - Note:
@@ -197,5 +198,5 @@
             - Partitioned tables in BigQuery provide an efficient and cost-effective way to manage and query large datasets.
       - Add dependencies 
           ```python
-          chain(bigquery_external_table_task, create_partitioned_and_clustered_table_dag)
+          chain(bigquery_external_table_task, create_partitioned_table_dag)
           ```

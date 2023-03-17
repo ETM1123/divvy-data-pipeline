@@ -18,7 +18,7 @@ The project leverages the following technologies for its implementation:
 
 ## Architecture
 The end-to-end process of the project is as follows:
-![data-pipline](images/Divvy_data_pipeline_01.png)
+![data-pipline](images/Divvy-data-pipeline-3.png)
 
 0. Google Cloud project set up, Cloud bucket configuration: (GCP, Terraform)
 1. Extract data from web, upload data to GCS: (Python, Airflow, Docker)

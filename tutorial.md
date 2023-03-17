@@ -321,6 +321,12 @@ In this section, we'll cover how to set up our data orchestration tool Apache Ai
           context: .
           dockerfile: ./Dockerfile
         ```
+      - In the volume section, add the line below - that
+      mounts the `~/.google/credentials` directory to the container, allowing the container to access our google credential json file from the host machine.
+      ```yaml
+      Volumes:
+        - ~/.google/credentials/:/.google/credentials:ro
+      ```
       - In the environment section change the AIRFLOW__CORE__EXECUTOR variable from CeleryExecutor to LocalExecutor and and remove AIRFLOW__CELERY__RESULT_BACKEND and AIRFLOW__CELERY__BROKER_URL variables. The enviroment section should look like the following:
         ```yaml
         environment:
@@ -374,8 +380,9 @@ In this section, we'll cover how to set up our data orchestration tool Apache Ai
     ```
     - This command will start the Airflow web server, scheduler, and worker services. If everything is configured correctly, you should see similar messages in your terminal like the ones below:
       ```css
-      airflow-scheduler_1  | [2023-03-13 17:34:46,902] {scheduler_job.py:596} INFO - Starting the scheduler
-      airflow-webserver_1  | [2023-03-13 17:35:05 +0000] [38] [INFO] Listening at: http://0.0.0.0:8080 (38)
+      Starting airflow_airflow-init_1 ... done
+      Starting airflow_airflow-webserver_1 ... done
+      Starting airflow_airflow-scheduler_1 ... done 
       ```
   - To stop Airflow, press `Ctrl+C` in the terminal window where you ran `docker-compose up` then run the following:
       ```bash
@@ -562,7 +569,7 @@ In this section, we will utilize DBT Cloud to transform our dataset and generate
   - Create a new dashboard in Data Studio: Add charts, tables, and other visualizations to your dashboard using the data from your BigQuery dataset. Customize the layout and style of your dashboard as desired.
     - You can use the following video to design your dashboard: [dashboard-tutorial](https://www.youtube.com/watch?v=nLHypcQymkY)
 
-We can make powerful dshboards with ease using Google Data Studio. Here's a dashboard that provides an overview of our analysis. 
+We can make powerful dashboards with ease using Google Data Studio. Here's a dashboard that provides an overview of our analysis. 
 
 ![Dashboard](images/divvy_overview_dashboard.png)
 
