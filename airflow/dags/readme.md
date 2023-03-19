@@ -145,10 +145,9 @@
       - Declare query
           ```python
           create_table_query = f"""
-          -- Creating a partition and cluster table
+          -- Creating a partition table
           CREATE OR REPLACE TABLE {PROJECT_ID}.{BIGQUERY_DATASET}.{PARTITIONED_TABLE}
           PARTITION BY DATE({PARTITION_COL})
-          CLUSTER BY member_casual AS
           SELECT * FROM {PROJECT_ID}.{BIGQUERY_DATASET}.{TABLE_NAME};
           """
           ```
