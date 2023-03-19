@@ -4,6 +4,17 @@
 This repository aims to automate the analysis and investigation of Divvy's bikeshare project, as previously conducted and documented here: [Divvy's bikeshare project](https://github.com/ETM1123/Divvy-Bikeshare-Project). Unlike the previous project, data is stored and computations are conducted on the cloud through the utilization of Google Cloud Platform (GCP) to create a data pipeline for analysis. To facilitate the replication of this environment, we have provided a comprehensive step-by-step tutorial for interested users. Please follow the instructions provided in the tutorial to execute the code in this repository or to customize the environment for your own projects.
 - [tutorial](https://github.com/ETM1123/divvy-data-pipeline/blob/main/tutorial.md)
 
+## Dataset: Divvy Historic Trip data 
+The Divvy Historical Trip Data comprises anonymized trip records that contain the following information:
+- Trip start day and time
+- Trip end day and time
+- Trip start station
+- Trip end station
+- Rider type (Member, Single Ride, and Day Pass)
+
+The dataset can be accessed at: [link-to-dataset](https://divvy-tripdata.s3.amazonaws.com/index.html). To obtain neighborhood information for each trip's start and end location, we utilize additional datasets. The neighborhood dataset can be accessed at: [link-to-neighborhood-dataset](https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Neighborhoods/bbvz-uum9).
+
+
 ## Technologies
 The project leverages the following technologies for its implementation:
 1. Google Cloud Platform (GCP):

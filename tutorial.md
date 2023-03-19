@@ -209,7 +209,7 @@ Once you are done with this project, and if you want to discard the infrastructu
 
 
 ## Step 2: Ingest data with Airflow
-In this section, we'll cover how to set up our data orchestration tool Apache Airflow. Apache Airflow is an open-source platform to programmatically author, schedule, and monitor workflows. It allows us to define complex workflows as directed acyclic graphs (DAGs) of tasks and dependencies, and manage their execution in a highly scalable and distributed environment.
+In this section, we'll cover how to set up our data orchestration tool Apache Airflow. Apache Airflow is an open-source platform to programmatically author, schedule, and monitor workflows. It allows us to define complex workflows as directed acyclic graphs (DAGs) of tasks and dependencies, and manage their execution in a highly scalable and distributed environment. It is important to note that Docker is a prerequisite for using Apache Airflow, and we assume that you have a basic understanding of Docker. However, if you need a quick refresher, we have included a Docker crash course in the resources section to help you get started.
 - Resources:
   - [airflow-docs](https://airflow.apache.org/docs/)
   - [docker-crash-course](https://www.youtube.com/watch?v=3c-iBn73dDE&t=2s)
@@ -403,8 +403,11 @@ In this section, we'll cover how to set up our data orchestration tool Apache Ai
     - Uploading the extracted data to Google Cloud Storage (GCS) in the form of Parquet files.
     - Formatting the data in a suitable manner and transferring it to Google BigQuery (GBQ).
   - To achieve the above tasks, we can create two DAGs: `ingest_data_to_gcs` and `gcs_to_gbq`. The `ingest_data_to_gcs` DAG includes the following tasks in sequence: 
-   $$  \text{download dataset} \rightarrow \text{unzip dataset} \rightarrow \text{format to parquet} \rightarrow \text{upload to gcs} $$
+
+   $$\text{download dataset} \rightarrow \text{unzip dataset} \rightarrow \text{format to parquet} \rightarrow \text{upload to gcs} $$
+
   - Once all the data has been successfully uploaded to GCS, we can activate the `gcs_to_gbq` DAG, which involves creating an external table and a partitioned table in GBQ to store the formatted data.
+
     $$\text{create external table} \rightarrow \text{create partitioned table}$$
 
   - To execute the `create partitioned table` task in the `gcs_to_gbq` dag, we have to create a bigquery connection with Airflow. We can create bigquery connection by following the steps below:
